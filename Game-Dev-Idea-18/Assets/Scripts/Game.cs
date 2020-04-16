@@ -4,57 +4,79 @@ using UnityEngine;
 
 public class Game
 {
-    const int AMOUNT_Of_Tiles_IN_FIGURA = 4;
-    const int AMOUNT_Of_FIGURS = 7;
+    const int AMOUNT = 5;
+    const int FIGURS = 7;
+    const int TILE_SIZE = 32;
 
-    List<GameObject> m_objs_list = new List<GameObject>();
+    GameObject m_currentFigure = null;
+    PrefabProvider m_provider = null;
 
-    
-
-    public Game()//constructer
-    {
-        Figurs();
-
-        
-    }
-    
     public void Update(float deltaTime)
     {
 
     }
-
-    public void Figurs()
+    public Game(PrefabProvider provider)//constructer
     {
-        GameObject Figurs = Resources.Load("Tile") as GameObject;
-        List<List<GameObject>> List_of_figurs_list = new List<List<GameObject>>();
-        List<GameObject> figurs_list = new List<GameObject>();
-        for (int i = 0; i < AMOUNT_Of_FIGURS; i++)
+        m_provider = provider;
+        CreatRandomFigure();
+    }
+
+    private void CreatRandomFigure()
+    {
+        CreateFigure(Random.Range(1, FIGURS + 1));
+    }
+
+    private void CreateFigure(int randomIndex)
+    {
+        switch(randomIndex)
         {
-            for (int j = 0; j < AMOUNT_Of_Tiles_IN_FIGURA; j++)
-            {
-                GameObject m_figurs = GameObject.Instantiate(Figurs);
-                figurs_list.Add(m_figurs);
-                m_figurs.transform.position = new Vector3(i * 2, j * 1, 0);
+            case 1:
+                CreateTileByArray(new int[,] { { 0, 0, 1, 0 },{ 0, 0, 1, 0 },{ 0, 0, 1, 0 },{ 0, 0, 1, 0 } });
+                break;
+            case 2:
+                CreateTileByArray(new int[,] { { 0, 0, 1, 0 },{ 0, 1, 1, 1 },{ 0, 0, 0, 0 },{ 0, 0, 0, 0 } });
+                break;
+            case 3:
+                CreateTileByArray(new int[,] { { 0, 0, 0, 0 }, { 0, 1, 1, 0 },{ 0, 0, 1, 1 },{ 0, 0, 0, 0 } });
+                break;
+            case 4:
+                CreateTileByArray(new int[,] { { 0, 0, 0, 0 }, { 0, 0, 1, 1 }, { 0, 1, 1, 0 },{ 0, 0, 0, 0 } });
+                break;
+            case 5:
+                CreateTileByArray(new int[,] { { 0, 0, 1, 0 }, { 0, 0, 1, 0 },{ 0, 1, 1, 0 },{ 0, 0, 0, 0 } });
+                break;
+            case 6:
+                CreateTileByArray(new int[,] { { 0, 0, 1, 0 }, { 0, 0, 1, 0 }, { 0, 0, 1, 1 }, { 0, 0, 0, 0 } });
+                break;
+            case 7:
+                CreateTileByArray(new int[,] { { 0, 0, 0, 0 }, { 0, 1, 1, 0 }, { 0, 1, 1, 0 }, { 0, 0, 0, 0 } });
+                break;
+        }
+
+    }
+
+    private void CreateTileByArray(int[,] array)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            { 
+                if(array[i, j] == 1)
+                {
+                    CreateTile(i,j);
+                }
             }
         }
     }
+
+    private void CreateTile(int i, int j)
+    {
+        GameObject parent = new GameObject();
+        //parent.AddComponent<Transform>();
+        m_currentFigure = GameObject.Instantiate(parent, m_provider.FigureStartPoint.transform);//put the figur in spicific point
+
+        GameObject go = Resources.Load("Tile") as GameObject;
+        GameObject m_obj = GameObject.Instantiate(go, m_currentFigure.transform);
+        go.transform.position = new Vector3(i * TILE_SIZE - 1.5f * TILE_SIZE, j * TILE_SIZE - 1.5f * TILE_SIZE, 0);
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-//GameObject go = Resources.Load("Tile") as GameObject;
-
-//for (int i = 0; i < AMOUNT; i++)
-//{
-//    GameObject m_obj = GameObject.Instantiate(go);
-//    m_objs_list.Add(m_obj);
-//    m_obj.transform.position = new Vector3(i * 1.0f, 0, 0);
-//}
