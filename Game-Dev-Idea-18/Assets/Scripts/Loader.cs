@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Loader : MonoBehaviour
 {
+    private float m_time = 0f;
     private Game m_game = null;
 
     void Start()
     {
-        m_game = new Game();
+        PrefabProvider provider = gameObject.GetComponent<PrefabProvider>();
+        m_game = new Game(provider);
     }
 
     void Update()
