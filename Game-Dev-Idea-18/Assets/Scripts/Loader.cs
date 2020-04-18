@@ -17,4 +17,9 @@ public class Loader : MonoBehaviour
     {
         m_game.Update(Time.deltaTime);
     }
+
+    private void KeyBoardController()
+    {
+
+    }
 }
