@@ -5,4 +5,6 @@ using UnityEngine;
 public class PrefabProvider : MonoBehaviour
 {
     public GameObject FigureStartPoint = null;
+    public GameObject FigurBase = null;
+    public GameObject Background = null;
 }
