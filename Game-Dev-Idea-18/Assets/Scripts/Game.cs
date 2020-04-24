@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Game
 {
-    const int FIGURS = 7;//number of figurs
-  
-    GameObject m_currentFigure = null;//starting from null figure.
-
-    Figures m_currentFigureType = Figures.I;//
-
+    const int FIGURS = 7;
+    GameObject m_currentFigure = null;
+    Figures m_currentFigureType = Figures.I;
     PrefabProvider m_provider = null;
 
-    //m_currentBackground = GameObject.Instantiate(m_provider.)
+    private Background m_Background = null;
+
 
     enum Figures
     {
@@ -29,20 +27,20 @@ public class Game
     {
 
     }
-    public Game(PrefabProvider provider)//constructer
+    public Game(PrefabProvider provider)
     {
         m_provider = provider;
         CreatRandomFigure();
-        BackGround();
+        m_Background = new Background(provider);
+        
     }
 
-    //choose a random figure
+    
     private void CreatRandomFigure()
     {
         CreateFigure(Random.Range(1, FIGURS + 1));
     }
 
-    //Create the figure
     private void CreateFigure(int randomIndex)
     {
         m_currentFigureType = (Figures)randomIndex;
@@ -115,7 +113,7 @@ public class Game
 
     }
 
-    //plasing the tile in evvery location of the arrat number 1
+    
     private void CreateTileByArray(int[,] array)
     {
         m_currentFigure = GameObject.Instantiate(m_provider.FigurBase);
@@ -131,7 +129,7 @@ public class Game
         }
     }
 
-    //here we create the tile and size of the tile
+    
     private void CreateTile(int i, int j, Transform parentTransform)
     {
         GameObject go = Resources.Load("Tile") as GameObject;
@@ -202,35 +200,5 @@ public class Game
         }
     }
 
-    public void BackGround()
-    {
-
-        for (int i = 0; i < 20; i++)
-        {
-            for (int j = 0; j < 10; j++)
-            {
-                GameObject backGround_go = Resources.Load("BackGroundTile") as GameObject;
-                SpriteRenderer renderer = backGround_go.GetComponent<SpriteRenderer>();
-
-
-                float size = 0f;
-
-                if (renderer != null)
-                {
-                    size = renderer.size.x;
-                }
-
-                GameObject backGround_obj = GameObject.Instantiate(backGround_go);
-
-                float x = j * size - 2f * size;
-                float y = i * size - 2f * size;
-                float z = 5;
-
-                backGround_go.transform.position = new Vector3(x, y, z);
-                
-
-
-            }
-        }
-    }
+    
 }
