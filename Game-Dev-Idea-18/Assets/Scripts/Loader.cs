@@ -16,7 +16,7 @@ public class Loader : MonoBehaviour
    
     void Update()
     {
-        //m_game.Update(Time.deltaTime);
+        m_game.Update(Time.deltaTime);
         KeyBoardController();
     }
 
