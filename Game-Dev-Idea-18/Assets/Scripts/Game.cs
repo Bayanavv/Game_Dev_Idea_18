@@ -34,7 +34,6 @@ public class Game
         m_Background = new Background(provider);
         
     }
-
     
     private void CreatRandomFigure()
     {
@@ -113,7 +112,6 @@ public class Game
 
     }
 
-    
     private void CreateTileByArray(int[,] array)
     {
         m_currentFigure = GameObject.Instantiate(m_provider.FigurBase);
@@ -129,7 +127,6 @@ public class Game
         }
     }
 
-    
     private void CreateTile(int i, int j, Transform parentTransform)
     {
         GameObject go = Resources.Load("Tile") as GameObject;
