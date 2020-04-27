@@ -10,8 +10,9 @@ public class Game
     PrefabProvider m_provider = null;
 
     private Background m_Background = null;
-
-
+    
+    
+    
     enum Figures
     {
         I = 1,
@@ -32,6 +33,7 @@ public class Game
         m_provider = provider;
         CreatRandomFigure();
         m_Background = new Background(provider);
+        
         
     }
     
@@ -196,6 +198,12 @@ public class Game
                 break;
         }
     }
+
+    public void moveFigure(int x, int y)
+    {
+        m_currentFigure.transform.position = new Vector3(x, y, 0);
+    }
+  
 
     
 }
