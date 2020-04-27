@@ -26,5 +26,15 @@ public class Loader : MonoBehaviour
         {
             m_game.RotateFigut();
         }
+
+        if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            m_game.moveFigure(-1,0);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            m_game.moveFigure(1, 0);
+        }
     }
 }
