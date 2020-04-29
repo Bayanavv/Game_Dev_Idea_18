@@ -233,7 +233,7 @@ Transform:
   m_GameObject: {fileID: 1911712557}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -254,5 +254,5 @@ MonoBehaviour:
     type: 3}
   FigurBase: {fileID: 6604277210794748797, guid: 0ffc515609e3e47469a16bf5606f1f12,
     type: 3}
-  Background: {fileID: 5549255737718062423, guid: 804d7d9e0789379418cfffc43c805055,
+  BackGroundCell: {fileID: 8547323887441316279, guid: 3d0f96f420fb3134aa68221edc982b0c,
     type: 3}
