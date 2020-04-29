@@ -27,14 +27,21 @@ public class Loader : MonoBehaviour
             m_game.RotateFigut();
         }
 
-        if(Input.GetKey(KeyCode.LeftArrow))
+        else if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
             m_game.moveFigure(-1,0);
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             m_game.moveFigure(1, 0);
+        }
+
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Time.time - m_game.fall >= m_game.fallSpeed)
+        {
+            m_game.moveFigure(0, -1);
+
+            m_game.fall = Time.time;
         }
     }
 }
