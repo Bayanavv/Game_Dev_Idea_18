@@ -9,6 +9,9 @@ public class Game
     Figures m_currentFigureType = Figures.I;
     PrefabProvider m_provider = null;
 
+    public float fall = 0;
+    public float fallSpeed = 1;
+
     private Background m_Background = null;
     
     
@@ -201,7 +204,7 @@ public class Game
 
     public void moveFigure(int x, int y)
     {
-        m_currentFigure.transform.position = new Vector3(x, y, 0);
+        m_currentFigure.transform.position += new Vector3(x, y, 0);
     }
   
 
