@@ -204,7 +204,11 @@ public class Game
 
     public void moveFigure(int x, int y)
     {
-        m_currentFigure.transform.position += new Vector3(x, y, 0);
+        if(m_currentFigure.transform.position.y > -8)
+        {
+            m_currentFigure.transform.position += new Vector3(x, y, 0);
+        }
+
     }
   
 
