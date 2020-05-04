@@ -35,9 +35,7 @@ public class Game
     {
         m_provider = provider;
         CreatRandomFigure();
-        m_Background = new Background(provider);
-        
-        
+        m_Background = new Background(provider); 
     }
     
     private void CreatRandomFigure()
