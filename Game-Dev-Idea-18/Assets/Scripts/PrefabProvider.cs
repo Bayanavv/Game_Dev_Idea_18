@@ -7,5 +7,6 @@ public class PrefabProvider : MonoBehaviour
     public GameObject FigureStartPoint = null;
     public GameObject FigurBase = null;
     public GameObject BackGroundCell = null;
+    public GameObject BGBase = null;
     
 }
