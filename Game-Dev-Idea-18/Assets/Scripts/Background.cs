@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Background
 {
+    GameObject m_BgBase = null;
 
     float BGLength = 11f;
     float BGHight = 20f;
@@ -16,10 +17,11 @@ public class Background
 
     private void CreateBG()
     {
-        CreateBGTileByArray();
+        m_BgBase = GameObject.Instantiate(m_provider.BGBase);
+        CreateBGTileByArray(m_BgBase.transform);
     }
 
-    private void CreateBGTileByArray()
+    private void CreateBGTileByArray(Transform BGparentTransform)
     {
         SpriteRenderer renderer = m_provider.BackGroundCell.GetComponent<SpriteRenderer>();
         
@@ -44,6 +46,7 @@ public class Background
                 position.x = sizeX * j - shiftX;
                 position.y = sizeY * i - shiftY;
                 cell.transform.position = position;
+                cell.transform.parent = BGparentTransform;
             }
         }
     }
