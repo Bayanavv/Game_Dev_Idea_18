@@ -256,3 +256,4 @@ MonoBehaviour:
     type: 3}
   BackGroundCell: {fileID: 8547323887441316279, guid: 3d0f96f420fb3134aa68221edc982b0c,
     type: 3}
+  BGBase: {fileID: 5840169646591620943, guid: b400c0d7514f34a6aa120934058f027b, type: 3}
